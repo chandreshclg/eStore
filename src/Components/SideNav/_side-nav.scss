@@ -1,0 +1,36 @@
+@import '../../style/sass/variable';
+@import '../../style/sass/mixins';
+
+.side-nav{
+    margin-top: 1em;
+    padding: 0.6em;
+    box-shadow: 1px 0 14px 0 lightgrey;
+    height: 98%;
+    border-radius: 1em;
+
+    .section-title{
+        padding: 1em;
+
+        h3{
+            text-align: center;
+        }
+    }
+
+    .individual-category{
+        ul{
+            padding: 0;
+        }
+
+        .sub-items{
+            list-style-type: none;
+            margin-bottom: 0.6em;
+            text-align: center;
+
+            a{
+                text-decoration: none;
+                color: black;
+                @include underline-transition(0.3);
+            }
+        }
+    }
+}
