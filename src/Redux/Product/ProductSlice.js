@@ -25,6 +25,27 @@ const productSlice = createSlice({
             })
 
             state.products = filteredData;
+        },
+
+        filterProductByCategory: (state, action) => {
+            let filteredCategories = action.payload.categories.filter((ca) => {
+                return ca.parent_category_id === action.payload.selectedCategory.id;
+            });
+            const filteredData = [];
+            filteredCategories.forEach((ca) => {
+                action.payload.products.forEach((p) => {
+                    if (p.category_id === ca.id) {
+                        filteredData.push(p);
+                    }
+                });
+            });
+        
+            state.products = filteredData;
+        },
+        filterProductsHome: (state, action) => {
+
+            const filteredData = action.payload;
+            state.products = filteredData;
         }
     },
     extraReducers: builder => {
@@ -43,5 +64,5 @@ const productSlice = createSlice({
     }
 });
 
-export const {filterProduct, filterByPrice} = productSlice.actions;
+export const {filterProduct, filterByPrice, filterProductByCategory, filterProductsHome} = productSlice.actions;
 export default productSlice.reducer;
